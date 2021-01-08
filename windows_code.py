@@ -12,51 +12,6 @@ async def on_ready():
     print("Name: {}\n".format(client.user.name))
     print("ID: {}\n".format(client.user.id)) 
 
-
-#f.xhiro
-@client.command()
-async def xhiro(ctx):
-    await ctx.send("""Ohhhh Xhiro Lay your hands on me while I'm bleeding dry :musical_note:
-Break on through blue skies, I'll take you higher, higher than ever before
-I’m Caught up in circles
-All dreams and bright lights
-Wait I'm here always, brighter than sunshine
-To Xhiro I fly
-Fly out
-Fly out to your heart :heart:
-Fly out
-Fly out
-Lay your hands on me
-Oh xhiro Stay close by my side
-Drive me so crazy
-Moonlight and star shine
-Faded into the setting sun :sunny:
-I'll see you again I'll carry on
-Feeling like I'm floating leaves in the fleeting sky :milky_way:
-You can sing that song
-Let it go
-Move on
-Let's go way out
-Spaced out
-Spaced out
-Lay your hands on me xhiro stay close to my eyes
-Drive me so crazy
-Wake up in your arms can’t even tell you how I feel
-oh xhiro making me act up,
-oh xhiro why you gotta tug my heart :heart:
-don’t make me pout lovin you is like livin free
-but when they say we aren’t meant to be
-ima just have to disagree
-You play with my heart I don’t mind
-I’ll fake it pretend I’m blind
-I don’t even care
-when I’m with you it all melts away
-Maybe someday I’ll see what’s really going on
-but I don’t want to see what’s really happening.
-As long as your by my side
-I’ll just let it all slide
-oh xhirooooo :smiling_face_with_3_hearts::musical_note:""")
-
 #f.ping
 @client.command()
 async def ping(ctx):
@@ -76,7 +31,7 @@ async def play(ctx, url : str):
     voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='General')
     await voiceChannel.connect()
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-
+                                                                                    #This is the option to stream off a youtube URL
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -118,7 +73,7 @@ async def diamondcity(ctx):
     await ctx.send("Tuning in to Diamond City Radio!")
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     mp3_path = "D:\\Bot\\4.DiamondCity"
-    exc_path = "C:\\Users\\range\\Desktop\\DiscordBot\\ffmpeg\\bin\\ffmpeg.exe"
+    exc_path = "D:\\Bot\\ffmpeg\\bin\\ffmpeg.exe"
     path = "D:\\Bot\\4.DiamondCity"
     files=os.listdir(path)
 
@@ -146,7 +101,7 @@ async def applachia(ctx):
     await ctx.send("Tuning in to Applachian Radio!")
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     mp3_path = "D:\\Bot\\76.applachia"
-    exc_path = "C:\\Users\\range\\Desktop\\DiscordBot\\ffmpeg\\bin\\ffmpeg.exe"
+    exc_path = "D:\\Bot\\ffmpeg\\bin\\ffmpeg.exe"
     path = "D:\\Bot\\76.applachia"
     files=os.listdir(path)
 
@@ -174,7 +129,7 @@ async def fallout2(ctx):
     await ctx.send("Tuning in to the fallout 2 Radio!")
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     mp3_path = "D:\\Bot\\fallout.2"
-    exc_path = "C:\\Users\\range\\Desktop\\DiscordBot\\ffmpeg\\bin\\ffmpeg.exe"
+    exc_path = "D:\\Bot\\ffmpeg\\bin\\ffmpeg.exe"                       #Note if you want music from a folder youll need to change the filepath you will also need to force run it throught the fmmpeg .exe
     path = "D:\\Bot\\fallout.2"
     files=os.listdir(path)
 
@@ -195,15 +150,15 @@ async def fallout2(ctx):
 
 #f.gnr
 @client.command()
-async def Applachia(ctx):
+async def GNR(ctx):
     guild = ctx.guild
     channel = ctx.author.voice.channel
     await channel.connect()
-    await ctx.send("Tuning in to Galaxy News Radio Radio!")
+    await ctx.send("Tuning in to Galaxy News Radio!")
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    mp3_path = "D:\\Bot\\76.applachia"
-    exc_path = "C:\\Users\\range\\Desktop\\DiscordBot\\ffmpeg\\bin\\ffmpeg.exe"
-    path = "D:\\Bot\\76.applachia"
+    mp3_path = "D:\\Bot\\Fallout3_GNR"
+    exc_path = "D:\\Bot\\ffmpeg\\bin\\ffmpeg.exe"
+    path = "D:\\Bot\\Fallout3_GNR"
     files=os.listdir(path)
 
     for _ in os.listdir(path):
@@ -220,9 +175,6 @@ async def Applachia(ctx):
 
         while voice.is_playing():
             await asyncio.sleep(0.25)
-
-
-
 
 #help
 client.remove_command("help")
@@ -249,28 +201,17 @@ async def DiamondCity(ctx):
     em.add_field(name = "Example ", value = "```f.diamondcity```", inline = False)
     await ctx.send(embed = em)
 
-
-
+ 
 #Errors
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('Please pass in all requirements :rolling_eyes:.')
+        #await ctx.send('Please pass in all requirements :rolling_eyes:.')
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You dont have all the Perms :angry:")
+        #await ctx.send("You dont have all the Perms :angry:")
 
 
 
 
 
 client.run("token")
-
-
-#f.resume
-#@client.command()
-#async def resume(ctx):
-    #voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    #if voice.is_paused():
-        #voice.resume()
-    #else:
-        #await ctx.send("The audio is not paused.")
