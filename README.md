@@ -1,40 +1,19 @@
 # Fallout Radio (A discord.py Music Bot)
 
-Desc.
-
-## Getting Started
-
-How to install on your system: Linux (check the wiki) and Windows (check wiki). (Mac version coming whenever I get a mac)
+A Fallout Radio themed discord bot to bring the wasteland to your server!
 
 ### Prerequisites
 
-There will be multiple Prerequisites. to install just do the following for your system
+- Have python and discord installed. Go [here](https://www.python.org/downloads/) for the latest release of python and go [here](https://discord.com/download) for the latest version of Discord.
 
-```
-python3 requirementsW.txt
-```
+## Getting Started & Installtion
 
-### Installing
+To Install on your system check the wiki. For Windows installtion go [here](https://github.com/POPE44/FalloutRadio/wiki/Windows-Installation) and for linux installtion go [here](https://github.com/POPE44/FalloutRadio/wiki/Linux-Installation)
 
-You will need to change the fille paths that to the folders you wish to play. If on windows you will also need to locate the ffmpeg.exe
+## Test Server
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
+- Join my discord server [here](https://discord.gg/qr4pyDB8cv) .
+- Invite my bots to your server [Fallout]https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=7409409&scope=bot) [ModBot](http://bit.ly/383IjtK)
 
 ### Break down into end to end tests
 
@@ -52,9 +31,9 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Hosting
 
-Add additional notes about how to deploy this on a live system
+- I dont know how to host this on heroku (yet) but will attempt to learn. As of now i have it deployed on a windows machine on AWS free 1 year trial.
 
 ## Built With
 
@@ -64,22 +43,19 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 ..........
 
 ## Authors
 
-* **Pope** - *All Work* - [Grizz#7690](https://github.com/POPE44)
+* **Pope** - *All Work* - [Grizz#7690](https://discord.gg/qr4pyDB8cv)
 
 See also the list of [contributors](https://github.com/POPE44/FalloutRadio/contributors) who participated in this project.
 
-## License
-..............
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+*Special Thanks to Xhiro for helping (a lot) with this project
+*The People in the python Discord
+* and Zxcer who helped a little
