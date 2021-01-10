@@ -1,6 +1,12 @@
+<p float="left">
+  <img src="https://img.shields.io/pypi/pyversions/Discord.py?style=flat-square" width="200" />
+   <img src="https://img.shields.io/discord/794542794428383272?style=flat-square" width="110" /> 
+  <img src="https://img.shields.io/badge/Discord.py-Rewrite-blue?style=flat-square" width="150" /> 
+</p>
+
 # Fallout Radio (A discord.py Music Bot)
 
-A Fallout Radio themed discord bot to bring the wasteland to your server!
+A Fallout Radio themed discord bot to bring the wasteland to your server! This music bot aims to bring those long hours listening to your favourite radio staions across all fallout games right to your discord call! This bot also doubles as a music bot with the ability to stream off a youtube url so if the fallout radios arent for you then you have other options! Written with discord.py rewrite this bot is open source so that making a music bot has never been easier!
 
 ### Prerequisites
 
@@ -18,11 +24,10 @@ To Install on your system check the wiki. For Windows installtion go [here](http
 
 ### An Extensive Help Menu and List of Stations
 
-[](https://i.ibb.co/jhb9VTY/Capture1.png)
-
-[](https://i.ibb.co/ZXyTzyH/Capture2.png)
-
-
+<p float="left">
+  <img src="https://i.ibb.co/jhb9VTY/Capture1.png" width="370" />
+  <img src="https://i.ibb.co/ZXyTzyH/Capture2.png" width="400" /> 
+</p>
 
 
 ## Hosting
