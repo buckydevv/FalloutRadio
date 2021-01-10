@@ -15,25 +15,52 @@ To Install on your system check the wiki. For Windows installtion go [here](http
 - Join my discord server [here](https://discord.gg/qr4pyDB8cv) .
 - Invite my bots to your server [Fallout]https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=7409409&scope=bot) [ModBot](http://bit.ly/383IjtK)
 
-### Break down into end to end tests
 
-Explain what these tests test and why
+### An Extensive Help Menu and List of Stations
 
-```
-Give an example
-```
+[https://i.ibb.co/jhb9VTY/Capture1.png] 
+[https://i.ibb.co/ZXyTzyH/Capture2.png]
 
-### And coding style tests
 
-Explain what these tests test and why
 
-```
-Give an example
-```
 
 ## Hosting
 
 - I dont know how to host this on heroku (yet) but will attempt to learn. As of now i have it deployed on a windows machine on AWS free 1 year trial.
+
+### Code For Playing a Staion
+
+- An example code of a staion
+ 
+ ```python 
+@client.command()
+async def diamondcity(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to Diamond City Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "D:\\Bot\\4.DiamondCity"
+    exc_path = "D:\\Bot\\ffmpeg\\bin\\ffmpeg.exe"
+    path = "D:\\Bot\\4.DiamondCity"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(
+                    executable=exc_path,
+                    source=os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+```
+
 
 ## Built With
 
@@ -42,20 +69,17 @@ Give an example
 * [Python](phttps://www.python.org/) - Langauge
 
 ## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-
-## Versioning
-..........
+Please make sure to update tests as appropriate.
 
 ## Authors
 
 * **Pope** - *All Work* - [Grizz#7690](https://discord.gg/qr4pyDB8cv)
 
-See also the list of [contributors](https://github.com/POPE44/FalloutRadio/contributors) who participated in this project.
-
 
 ## Acknowledgments
 
-*Special Thanks to Xhiro for helping (a lot) with this project
-*The People in the python Discord
-* and Zxcer who helped a little
+- Special Thanks to Xhiro for helping (a lot) with this project
+- The People in the python Discord
+- & Zxcer who helped a little
