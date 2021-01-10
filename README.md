@@ -13,13 +13,14 @@ To Install on your system check the wiki. For Windows installtion go [here](http
 ## Test Server
 
 - Join my discord server [here](https://discord.gg/qr4pyDB8cv) .
-- Invite my bots to your server [Fallout]https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=7409409&scope=bot) [ModBot](http://bit.ly/383IjtK)
+- Invite my bots to your server [Fallout](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=7409409&scope=bot) [ModBot](http://bit.ly/383IjtK)
 
 
 ### An Extensive Help Menu and List of Stations
 
-[https://i.ibb.co/jhb9VTY/Capture1.png] 
-[https://i.ibb.co/ZXyTzyH/Capture2.png]
+()[https://i.ibb.co/jhb9VTY/Capture1.png] 
+
+()[https://i.ibb.co/ZXyTzyH/Capture2.png]
 
 
 
