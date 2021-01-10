@@ -18,9 +18,9 @@ To Install on your system check the wiki. For Windows installtion go [here](http
 
 ### An Extensive Help Menu and List of Stations
 
-()[https://i.ibb.co/jhb9VTY/Capture1.png] 
+[](https://i.ibb.co/jhb9VTY/Capture1.png)
 
-()[https://i.ibb.co/ZXyTzyH/Capture2.png]
+[](https://i.ibb.co/ZXyTzyH/Capture2.png)
 
 
 
