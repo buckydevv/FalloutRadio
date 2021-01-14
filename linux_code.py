@@ -204,4 +204,4 @@ async def DiamondCity(ctx):
 
 
 
-client.run("NzcwOTYzNzE0Mzg3MjE0MzM3.X5lN6Q.k6fJELw-W4KJNuHNepzD7E5Ljv0")
+client.run("token")
