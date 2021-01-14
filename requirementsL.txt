@@ -1,0 +1,5 @@
+youtube_dl
+discord.py rewrite
+ffmpeg
+PyNaCl
+pafy
