@@ -1,0 +1,374 @@
+import discord, os, json, youtube_dl, random, asyncio, random, praw, aiohttp, pafy
+from discord.ext import commands, tasks
+from discord.utils import get
+from pathlib import Path
+from random import choice
+from discord.voice_client import VoiceClient
+
+client = commands.Bot(command_prefix="f.")
+
+
+@client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="the sun set on the Wasteland"))
+    print("------------------------------------\n           Bot is Running: \n------------------------------------")
+    print("Name: {}\n".format(client.user.name))
+    print("ID: {}\n".format(client.user.id)) 
+
+#f.ping
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Radio Strength: {round(client.latency * 1000)}ms')
+
+
+@client.command()
+async def play(ctx, url : str):
+    song_there = os.path.isfile("song.mp3")
+    try:
+        if song_there:
+            os.remove("song.mp3")
+    except PermissionError:
+        await ctx.send("Wait for the current playing music to end or use the 'stop' command")
+        return
+
+    voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='General')
+    await voiceChannel.connect()
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+                                                                                    #This is the option to stream off a youtube URL
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    for file in os.listdir("./"):
+        if file.endswith(".mp3"):
+            os.rename(file, "song.mp3")
+    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+    
+#f.leave
+@client.command()
+async def leave(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_connected():
+        await ctx.send("You've Tuned Out")
+        await voice.disconnect()
+    else:
+        await ctx.send("The bot is not connected to a voice channel.")
+
+#f.skip
+@client.command()
+async def skip(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.stop()
+
+#f.DiamondCity
+@client.command()
+async def diamondcity(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to Diamond City Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "/home/pi/Desktop/FalloutRadio/4.DiamondCity"
+    path = "/home/pi/Desktop/FalloutRadio/4.DiamondCity"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(
+                    os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+
+#f.Applachia
+@client.command()
+async def applachia(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to Applachian Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "D:\\Bot\\76.applachia"
+    path = "D:\\Bot\\76.applachia"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+
+#f.fallout2
+@client.command()
+async def fallout2(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to the fallout 2 Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "D:\\Bot\\fallout.2                     #Note if you want music from a folder youll need to change the filepath you will also need to force run it throught the fmmpeg .exe
+    path = "D:\\Bot\\fallout.2"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+
+#f.gnr
+@client.command()
+async def GNR(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to Galaxy News Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "/home/pi/Desktop/FalloutRadio/Fallout3_GNR"
+    path = "/home/pi/Desktop/FalloutRadio/Fallout3_GNR"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+
+
+
+#f.Mojave
+@client.command()
+async def Mojave(ctx):
+    guild = ctx.guild
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    await ctx.send("Tuning in to Mojave Wasteland Radio!")
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    mp3_path = "/home/pi/Desktop/FalloutRadio/Mojave"
+    path = "/home/pi/Desktop/FalloutRadio/Mojave"
+    files=os.listdir(path)
+
+    for _ in os.listdir(path):
+        d = random.choice(files)
+
+        if not voice.is_playing():
+            print(f"Playing \"{d}\"")
+            voice.play(
+                discord.FFmpegPCMAudio(os.path.join(mp3_path, d)
+                )
+            )
+
+        while voice.is_playing():
+            await asyncio.sleep(0.25)
+
+
+#help
+client.remove_command("help")
+@client.command(invoke_without_command = True)
+async def help(ctx):
+    em = discord.Embed(title = "Help", description = "Use f.help <command> for extended help **(type f.stations for a list of stations)**", color = ctx.author.color)
+    em.add_field(name = "**Commands**", value = "Commands:\n `f.ping`  - shows bots latency\n `f.skip`  - skips song\n `snipe`  - shows last deleted message\n `f.meme`  - Shows a random meme from r/falloutmemes\n `f.play ww w.youtube.com/example` plays a outube video off a url\n  ")
+    em.add_field(name = "**KEY NOTES**", value = "The bot is still in development as such its a bit clunky. There is currently no skip feature. To make the bot stop type f.leave (to skip type 'f.skip'). The 'f.play' feature only works with a url directly after it.")
+    await ctx.send(embed = em)
+
+@client.group()
+async def stations(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "__Stations__: ", value = "`diamondcity`\n`galaxynewsradio`\n`fallout2`\n`mojave`\n`appalachia`\n`classical`\n ")
+    em.add_field(name = "Example ", value = "```f.stations GalaxyNewsRadio```", inline = False)
+    await ctx.send(embed = em)
+
+@stations.command()
+async def diamondcity(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "__Diamond City radio__: ", value = "Diamond City Radio is a radio station in the Commonwealth in 2287, broadcast from Diamond City. The radio station plays a total of 37 songs, not including Magnolia's songs. (From Fallout 4) \n ")
+    em.set_thumbnail(url="https://i.ibb.co/88DC7NZ/tumblr-nz6b0b-FLvl1rmysx2o1-1280-3071.jpg")
+    em.add_field(name = "**Wiki: **", value = "https://fallout.fandom.com/wiki/Diamond_City_Radio", inline = False)
+    em.add_field(name = "Example ", value = "```f.diamondcity```", inline = False)
+    await ctx.send(embed = em)
+
+@stations.command()
+async def galaxynewsradio(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "**Galaxy News Radio**: ", value = "Galaxy News Radio was a pre-War radio station based in Washington, D.C. and a subsidiary of Galaxy News Network. By 2277, Galaxy News Radio had been repurposed by Three Dog into a community radio station that reported on the happenings around the Capital Wasteland. (From Fallout 3) `\n ")
+    em.set_thumbnail(url="https://i.ibb.co/DgFycpX/05-Galaxy-News-Radio.png")
+    em.add_field(name = "**Wiki: **", value = "https://fallout.fandom.com/wiki/Galaxy_News_Radio_(radio)", inline = False)
+    em.add_field(name = "Example ", value = "```f.GNR```", inline = False)
+    await ctx.send(embed = em)
+ 
+@stations.command()
+async def appalachia(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "**Appalachia Radio** : ", value = "Appalachia Radio is broadcast from an unknown location within West Virginia, though its exact location does not appear anywhere in-game. Radio placement in pre-War locations indicates that it was on the air before the Great War, though its history from 2077 until 2102 is uncertain. When the Vault Dwellers of Vault 76 emerged on Reclamation Day, the radio was continuously broadcasting songs on a loop, without a DJ.\nAs humans returned to the region after the Scorched Plague subsided, Julie, a young woman from the area, found the station where Appalachia Radio had its origin. She had previously listened to the station, and because the songs meant so much to her, she wanted to make sure that the radio was kept in working order.(From Fallout 76) `\n ")
+    em.set_thumbnail(url="https://i.ibb.co/z4gVg4P/maxresdefault.jpg")
+    em.add_field(name = "**Wiki: **", value = "https://fallout.fandom.com/wiki/Appalachia_Radio", inline = False)
+    em.add_field(name = "Example ", value = "```f.appalachia```", inline = False)
+    await ctx.send(embed = em)
+
+@stations.command()
+async def mojave(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "**Mojave/New Vegas Radio: ** ", value = "Mojave Music Radio only plays music, which consists mostly of country/western and rockabilly (some of which were actually performed and written by contemporary 21st-century musicians), with no DJ or news segments. The music played is the same as the music on Black Mountain Radio, but without the station's talk segments with Tabitha. It is unknown where the broadcast is coming from, yet its signal covers the entire Mojave.\n ")
+    em.set_thumbnail(url="https://i.ibb.co/br8LMQ1/133e20cb881a81d775cdc85216246a49-500x500x1.jpg")
+    em.add_field(name = "**Wiki: **", value = "https://fallout.fandom.com/wiki/Mojave_Music_Radio", inline = False)
+    em.add_field(name = "Example ", value = "```f.Mojave```", inline = False)
+    await ctx.send(embed = em)
+
+
+@stations.command()
+async def fallout2(ctx):
+    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
+    em.add_field(name = "**Fallout 2 SoundTrack **", value = "The soundtrack for Fallout 2 was composed by Mark Morgan. On May 10, 2010, it was released together with the Fallout soundtrack on Morgan's Vault Archives album.\n ")
+    em.set_thumbnail(url="https://i.ibb.co/tB4Xs0N/images.jpg")
+    em.add_field(name = "Example ", value = "```f.fallout2```", inline = False)
+    em.add_field(name = "**Wiki**: ", value = "https://fallout.fandom.com/wiki/Fallout_2_soundtrack", inline = False)
+    await ctx.send(embed = em)
+
+#f.xhiro
+@client.command()
+async def xhiro(ctx):
+    await ctx.send("""Ohhhh Xhiro Lay your hands on me while I'm bleeding dry :musical_note:
+Break on through blue skies, I'll take you higher, higher than ever before
+I’m Caught up in circles
+All dreams and bright lights
+Wait I'm here always, brighter than sunshine
+To Xhiro I fly
+Fly out
+Fly out to your heart :heart:
+Fly out
+Fly out
+Lay your hands on me
+Oh xhiro Stay close by my side
+Drive me so crazy
+Moonlight and star shine
+Faded into the setting sun :sunny:
+I'll see you again I'll carry on
+Feeling like I'm floating leaves in the fleeting sky :milky_way:
+You can sing that song
+Let it go
+Move on
+Let's go way out
+Spaced out
+Spaced out
+Lay your hands on me xhiro stay close to my eyes
+Drive me so crazy
+Wake up in your arms can’t even tell you how I feel
+oh xhiro making me act up,
+oh xhiro why you gotta tug my heart :heart:
+don’t make me pout lovin you is like livin free
+but when they say we aren’t meant to be
+ima just have to disagree
+You play with my heart I don’t mind
+I’ll fake it pretend I’m blind
+I don’t even care
+when I’m with you it all melts away
+Maybe someday I’ll see what’s really going on
+but I don’t want to see what’s really happening.
+As long as your by my side
+I’ll just let it all slide
+oh xhirooooo :smiling_face_with_3_hearts::musical_note:""")
+
+#f.ping
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Radio Strength: {round(client.latency * 1000)}ms')
+    
+#f.leave
+@client.command()
+async def leave(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_connected():
+        await ctx.send("You've Tuned Out")
+        await voice.disconnect()
+    else:
+        await ctx.send("The bot is not connected to a voice channel.")
+
+#f.skip
+@client.command()
+async def skip(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.stop()
+
+
+snipe_message_content = None
+snipe_message_author = None
+snipe_message_id = None
+
+@client.event
+async def on_message_delete(message):
+
+    global snipe_message_content
+    global snipe_message_author
+    global snipe_message_id
+
+    snipe_message_content = message.content
+    snipe_message_author = message.author.id
+    snipe_message_id = message.id
+    await asyncio.sleep(60)
+
+    if message.id == snipe_message_id:
+        snipe_message_author = None
+        snipe_message_content = None
+        snipe_message_id = None
+
+@client.command()
+async def snipe(message):
+    if snipe_message_content==None:
+        await message.channel.send("Theres nothing to snipe.")
+    else:
+        embed = discord.Embed(description=f"{snipe_message_content}")
+        embed.set_footer(text=f"Asked by {message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar_url)
+        embed.set_author(name= f"<@{snipe_message_author}>")
+        await message.channel.send(embed=embed)
+        return
+
+@client.command(pass_context=True) 
+async def meme(ctx): 
+    embed = discord.Embed(title="", description="")
+    async with aiohttp.ClientSession() as cs:
+        async with cs.get('https://www.reddit.com/r/FalloutMemes/new.json?sort=hot') as r:
+            res = await r.json()
+            embed.set_image(url=res['data']['children'] [random.randint(0, 100)]['data']['url'])
+            await ctx.send(embed=embed)
+
+
+client.run("token")
