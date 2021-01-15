@@ -200,8 +200,9 @@ client.remove_command("help")
 @client.command(invoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "Help", description = "Use f.help <command> for extended help **(type f.stations for a list of stations)**", color = ctx.author.color)
-    em.add_field(name = "**Commands**", value = "Commands:\n `f.ping`  - shows bots latency\n `f.skip`  - skips song\n `snipe`  - shows last deleted message\n `f.meme`  - Shows a random meme from r/falloutmemes\n `f.play ww w.youtube.com/example` plays a outube video off a url\n  ")
+    em.add_field(name = "**Commands**", value = "Commands:\n `f.ping`  - shows bots latency\n `f.skip`  - skips song\n `snipe`  - shows last deleted message\n `f.meme`  - Shows a random meme from r/falloutmemes\n `f.play ww w.youtube.com/example`  - plays a outube video off a url\n `f.invite`  - Invite Link For The Bot\n f.author`  - My Socials\n  ")
     em.add_field(name = "**KEY NOTES**", value = "The bot is still in development as such its a bit clunky. There is currently no skip feature. To make the bot stop type f.leave (to skip type 'f.skip'). The 'f.play' feature only works with a url directly after it.")
+    em.add_field(name = "**Support Me**", value = "[(Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot) , [Invite To Support Server](hhtps://discord.gg/VmbFGpshyP) , [My GitHub](https://github.com/POPE44/FalloutRadio)")
     await ctx.send(embed = em)
 
 @client.group()
@@ -369,6 +370,28 @@ async def meme(ctx):
             res = await r.json()
             embed.set_image(url=res['data']['children'] [random.randint(0, 100)]['data']['url'])
             await ctx.send(embed=embed)
+            
+            
+#invite
+@client.command()
+async def invite(ctx):
+    mbed = discord.Embed(title = "Invite Link For Bot!! Spread It Around!!", description = (Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot)
+    await ctx.send(embed = mbed)
+ 
+#invite
+@client.command()
+async def author(ctx):
+    mbed = discord.Embed(title = "Thanks For Checking My Socials Out!!", description = "[Github](https://github.com/POPE44) , [Twitter](https://twitter.com/POPE44644) , [Reddit](https://www.reddit.com/user/WheresWally44)"
+    await ctx.send(embed = mbed)
+    
+    
+
+
+
+#servercount
+@client.command(pass_context = True)
+async def servercount(ctx):
+  await ctx.send(f"I'm in {len(client.guilds)} servers!") 
 
 
 client.run("token")
