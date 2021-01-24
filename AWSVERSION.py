@@ -4,6 +4,7 @@ from discord.utils import get
 from pathlib import Path
 from random import choice
 from discord.voice_client import VoiceClient
+from discord import Embed
 
 client = commands.Bot(command_prefix="f.")
 
@@ -34,7 +35,7 @@ async def play(ctx, url : str):
     voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='General')
     await voiceChannel.connect()
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-                                                                                    #This is the option to stream off a youtube URL
+    
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -199,7 +200,7 @@ async def Mojave(ctx):
 client.remove_command("help")
 @client.command(invoke_without_command = True)
 async def help(ctx):
-    em = discord.Embed(title = "Help", description = "Use f.help <command> for extended help **(type f.stations for a list of stations)**", color = ctx.author.color)
+    em = Embed(title = "Help", description = "Use f.help <command> for extended help **(type f.stations for a list of stations)**", color = ctx.author.color)
     em.add_field(name = "**Commands**", value = "Commands:\n `f.ping`  - shows bots latency\n `f.skip`  - skips song\n `snipe`  - shows last deleted message\n `f.meme`  - Shows a random meme from r/falloutmemes\n `f.play ww w.youtube.com/example`  - plays a outube video off a url\n `f.invite`  - Invite Link For The Bot\n f.author`  - My Socials\n  ")
     em.add_field(name = "**KEY NOTES**", value = "The bot is still in development as such its a bit clunky. There is currently no skip feature. To make the bot stop type f.leave (to skip type 'f.skip'). The 'f.play' feature only works with a url directly after it.")
     em.add_field(name = "**Support Me**", value = "[(Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot) , [Invite To Support Server](hhtps://discord.gg/VmbFGpshyP) , [My GitHub](https://github.com/POPE44/FalloutRadio)")
@@ -207,7 +208,7 @@ async def help(ctx):
 
 @client.group()
 async def stations(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "__Stations__: ", value = "`diamondcity`\n`galaxynewsradio`\n`fallout2`\n`mojave`\n`appalachia`\n`classical`\n ")
     em.add_field(name = "Example ", value = "```f.stations GalaxyNewsRadio```", inline = False)
@@ -215,7 +216,7 @@ async def stations(ctx):
 
 @stations.command()
 async def diamondcity(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "__Diamond City radio__: ", value = "Diamond City Radio is a radio station in the Commonwealth in 2287, broadcast from Diamond City. The radio station plays a total of 37 songs, not including Magnolia's songs. (From Fallout 4) \n ")
     em.set_thumbnail(url="https://i.ibb.co/88DC7NZ/tumblr-nz6b0b-FLvl1rmysx2o1-1280-3071.jpg")
@@ -225,7 +226,7 @@ async def diamondcity(ctx):
 
 @stations.command()
 async def galaxynewsradio(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "**Galaxy News Radio**: ", value = "Galaxy News Radio was a pre-War radio station based in Washington, D.C. and a subsidiary of Galaxy News Network. By 2277, Galaxy News Radio had been repurposed by Three Dog into a community radio station that reported on the happenings around the Capital Wasteland. (From Fallout 3) `\n ")
     em.set_thumbnail(url="https://i.ibb.co/DgFycpX/05-Galaxy-News-Radio.png")
@@ -235,7 +236,7 @@ async def galaxynewsradio(ctx):
  
 @stations.command()
 async def appalachia(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "**Appalachia Radio** : ", value = "Appalachia Radio is broadcast from an unknown location within West Virginia, though its exact location does not appear anywhere in-game. Radio placement in pre-War locations indicates that it was on the air before the Great War, though its history from 2077 until 2102 is uncertain. When the Vault Dwellers of Vault 76 emerged on Reclamation Day, the radio was continuously broadcasting songs on a loop, without a DJ.\nAs humans returned to the region after the Scorched Plague subsided, Julie, a young woman from the area, found the station where Appalachia Radio had its origin. She had previously listened to the station, and because the songs meant so much to her, she wanted to make sure that the radio was kept in working order.(From Fallout 76) `\n ")
     em.set_thumbnail(url="https://i.ibb.co/z4gVg4P/maxresdefault.jpg")
@@ -245,7 +246,7 @@ async def appalachia(ctx):
 
 @stations.command()
 async def mojave(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "**Mojave/New Vegas Radio: ** ", value = "Mojave Music Radio only plays music, which consists mostly of country/western and rockabilly (some of which were actually performed and written by contemporary 21st-century musicians), with no DJ or news segments. The music played is the same as the music on Black Mountain Radio, but without the station's talk segments with Tabitha. It is unknown where the broadcast is coming from, yet its signal covers the entire Mojave.\n ")
     em.set_thumbnail(url="https://i.ibb.co/br8LMQ1/133e20cb881a81d775cdc85216246a49-500x500x1.jpg")
@@ -256,7 +257,7 @@ async def mojave(ctx):
 
 @stations.command()
 async def fallout2(ctx):
-    em = discord.Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
+    em = Embed(title = "**Stations**", description = "Use f.station <specifc station> for extended help ", color = ctx.author.color)
     em.set_author(name="Fallout Radio", url="https://github.com/POPE44", icon_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgmfWEvADJKkzie4Aori3Rvdu-nIlAhqsGg&usqp=CAU")
     em.add_field(name = "**Fallout 2 SoundTrack **", value = "The soundtrack for Fallout 2 was composed by Mark Morgan. On May 10, 2010, it was released together with the Fallout soundtrack on Morgan's Vault Archives album.\n ")
     em.set_thumbnail(url="https://i.ibb.co/tB4Xs0N/images.jpg")
@@ -290,7 +291,7 @@ async def snipe(message):
     if snipe_message_content==None:
         await message.channel.send("Theres nothing to snipe.")
     else:
-        embed = discord.Embed(description=f"{snipe_message_content}")
+        embed = Embed(description=f"{snipe_message_content}")
         embed.set_footer(text=f"Asked by {message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar_url)
         embed.set_author(name= f"<@{snipe_message_author}>")
         await message.channel.send(embed=embed)
@@ -298,7 +299,7 @@ async def snipe(message):
 
 @client.command(pass_context=True) 
 async def meme(ctx): 
-    embed = discord.Embed(title="", description="")
+    embed = Embed(title="", description="")
     async with aiohttp.ClientSession() as cs:
         async with cs.get('https://www.reddit.com/r/FalloutMemes/new.json?sort=hot') as r:
             res = await r.json()
@@ -309,13 +310,13 @@ async def meme(ctx):
 #invite
 @client.command()
 async def invite(ctx):
-    mbed = discord.Embed(title = "Invite Link For Bot!! Spread It Around!!", description = "[Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot)")
+    mbed = Embed(title = "Invite Link For Bot!! Spread It Around!!", description = "[Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot)")
     await ctx.send(embed = mbed)
  
 #invite
 @client.command()
 async def author(ctx):
-    mbed = discord.Embed(title = "Thanks For Checking My Socials Out!!", description = "[Github](https://github.com/POPE44) , [Twitter](https://twitter.com/POPE44644) , [Reddit](https://www.reddit.com/user/WheresWally44)")
+    mbed = Embed(title = "Thanks For Checking My Socials Out!!", description = "[Github](https://github.com/POPE44) , [Twitter](https://twitter.com/POPE44644) , [Reddit](https://www.reddit.com/user/WheresWally44)")
     await ctx.send(embed = mbed)
     
     
