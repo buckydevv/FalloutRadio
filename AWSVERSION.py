@@ -264,72 +264,6 @@ async def fallout2(ctx):
     em.add_field(name = "**Wiki**: ", value = "https://fallout.fandom.com/wiki/Fallout_2_soundtrack", inline = False)
     await ctx.send(embed = em)
 
-#f.xhiro
-@client.command()
-async def xhiro(ctx):
-    await ctx.send("""Ohhhh Xhiro Lay your hands on me while I'm bleeding dry :musical_note:
-Break on through blue skies, I'll take you higher, higher than ever before
-I’m Caught up in circles
-All dreams and bright lights
-Wait I'm here always, brighter than sunshine
-To Xhiro I fly
-Fly out
-Fly out to your heart :heart:
-Fly out
-Fly out
-Lay your hands on me
-Oh xhiro Stay close by my side
-Drive me so crazy
-Moonlight and star shine
-Faded into the setting sun :sunny:
-I'll see you again I'll carry on
-Feeling like I'm floating leaves in the fleeting sky :milky_way:
-You can sing that song
-Let it go
-Move on
-Let's go way out
-Spaced out
-Spaced out
-Lay your hands on me xhiro stay close to my eyes
-Drive me so crazy
-Wake up in your arms can’t even tell you how I feel
-oh xhiro making me act up,
-oh xhiro why you gotta tug my heart :heart:
-don’t make me pout lovin you is like livin free
-but when they say we aren’t meant to be
-ima just have to disagree
-You play with my heart I don’t mind
-I’ll fake it pretend I’m blind
-I don’t even care
-when I’m with you it all melts away
-Maybe someday I’ll see what’s really going on
-but I don’t want to see what’s really happening.
-As long as your by my side
-I’ll just let it all slide
-oh xhirooooo :smiling_face_with_3_hearts::musical_note:""")
-
-#f.ping
-@client.command()
-async def ping(ctx):
-    await ctx.send(f'Radio Strength: {round(client.latency * 1000)}ms')
-    
-#f.leave
-@client.command()
-async def leave(ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    if voice.is_connected():
-        await ctx.send("You've Tuned Out")
-        await voice.disconnect()
-    else:
-        await ctx.send("The bot is not connected to a voice channel.")
-
-#f.skip
-@client.command()
-async def skip(ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.stop()
-
-
 snipe_message_content = None
 snipe_message_author = None
 snipe_message_id = None
@@ -375,13 +309,13 @@ async def meme(ctx):
 #invite
 @client.command()
 async def invite(ctx):
-    mbed = discord.Embed(title = "Invite Link For Bot!! Spread It Around!!", description = (Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot)
+    mbed = discord.Embed(title = "Invite Link For Bot!! Spread It Around!!", description = "[Invite Fot Bot](https://discord.com/api/oauth2/authorize?client_id=770963714387214337&permissions=1677025137&scope=bot)")
     await ctx.send(embed = mbed)
  
 #invite
 @client.command()
 async def author(ctx):
-    mbed = discord.Embed(title = "Thanks For Checking My Socials Out!!", description = "[Github](https://github.com/POPE44) , [Twitter](https://twitter.com/POPE44644) , [Reddit](https://www.reddit.com/user/WheresWally44)"
+    mbed = discord.Embed(title = "Thanks For Checking My Socials Out!!", description = "[Github](https://github.com/POPE44) , [Twitter](https://twitter.com/POPE44644) , [Reddit](https://www.reddit.com/user/WheresWally44)")
     await ctx.send(embed = mbed)
     
     
